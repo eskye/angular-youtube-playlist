@@ -31,31 +31,34 @@
 
 			<h1>Youtube Playlist</h1>
 
+
+
 			<div class="youtubeApp ng-cloak" ng-app="youtubeApp" ng-cloak>
 				<div class="ng-youtube" ng-controller="PlaylistController">
 					
-					<div class="videoContainer">
+					<p ng-if="errorMessage.length">{{ errorMessage }}</p>
+
+					<div class="videoContainer" ng-if="!errorMessage.length">
 						<div class="video videoWrapper">
 							<iframe ng-src="{{ itemURL }}" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div><!-- End Video Container -->
 
 					<!-- Full Playlist Content -->
+					<!-- ng-if="item.items.length" hides this element if there are no items -->
 					<ul class="playlistItems" ng-repeat="item in playlist" ng-if="item.items.length">
 
 						<!-- Single Playlist Item Content -->
 						<li ng-repeat="videos in item.items" class="clearfix">
-							
 							<!-- Pass video ID into the itemID function using ng-click -->
 							<a href="#"  ng-click="itemID(videos.video.id, $event, $index)" ng-class="{ active: $index === selected }" class="clearfix">
 								<img class="thumbnail" ng-src="{{ videos.video.thumbnail.hqDefault }}" alt="{{ videos.video.title }}">
 								
 								<div class="metadata">
-									<h2>{{videos.video.title}}</h2>
-									<p>{{videos.video.description}}</p>
+									<h2>{{ videos.video.title }}</h2>
+									<p>{{ videos.video.description }}</p>
 								</div>
 							</a>
-
 						</li>
 
 					</ul>
@@ -63,8 +66,9 @@
 			</div><!-- End App -->
 
 
-		</div>
-	</div>
+
+		</div><!-- End Columns -->
+	</div><!-- End Row -->
 
 
 	<!-- build:js(.) scripts/vendor.js -->

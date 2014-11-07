@@ -51,12 +51,18 @@ body {
         height: 500px;
         overflow: hidden;
         overflow-y: auto;
-        background: rgb(156, 208, 216);
+        background: rgb(0, 225, 184);
         border: 1px solid;
         li{
         	a{
         		padding: 20px 0;
         		display: block;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
         		&.active{
         			background: rgb(61, 197, 255);
         		}

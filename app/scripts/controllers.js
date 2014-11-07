@@ -29,6 +29,6 @@ YouTubeController.controller('PlaylistController', ['$scope', '$http', '$sce', f
         })
         .error(function(data, status, headers, config) {
             console.log('Dear Developer, An Error Occured :p');
-            $('.inQuickerPage').append('<p>An Error has occured, please try again later.<p>');
+            $scope.errorMessage = 'An Error has occured, please try again later. Status ' + status + '.';
         });
 }]);
