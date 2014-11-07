@@ -1,0 +1,83 @@
+// bower:scss
+// endbower
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+.ng-cloak {
+    display: none;
+}
+.clearfix {
+    *zoom: 1;
+    &:before, &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    object, embed, iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.video {
+    iframe {
+        width: 100%;
+    }
+}
+.youtubeApp {
+    .playlistItems {
+        margin: 0 0 20px 0;
+        padding: 0;
+        list-style-type: none;
+        height: 500px;
+        overflow: hidden;
+        overflow-y: auto;
+        background: rgb(156, 208, 216);
+        border: 1px solid;
+        li{
+        	a{
+        		padding: 20px 0;
+        		display: block;
+        		&.active{
+        			background: rgb(61, 197, 255);
+        		}
+        	}
+        }
+    }
+    .thumbnail, .metadata {
+        float: left;
+    }
+    .thumbnail {
+        width: 40%;
+        padding: 0 0 0 2%;
+    }
+    .metadata {
+        width: 60%;
+        padding: 0 2%;
+        color: rgb(0, 0, 0);
+        h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+        }
+    }
+}

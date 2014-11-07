@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<title>Angular Youtube Player</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+	<!-- build:js scripts/vendor/modernizr.js -->
+	<script src="bower_components/modernizr/modernizr.js"></script>
+	<!-- endbuild -->
+
+</head>
+
+<body>
+	<!--[if lt IE 10]>
+	  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<div class="row">
+		<div class="12-medium columns">
+
+			<h1>Youtube Playlist</h1>
+
+			<div class="youtubeApp ng-cloak" ng-app="youtubeApp" ng-cloak>
+				<div class="ng-youtube" ng-controller="PlaylistController">
+					
+					<div class="videoContainer">
+						<div class="video videoWrapper">
+							<iframe ng-src="{{ itemURL }}" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div><!-- End Video Container -->
+
+					<!-- Full Playlist Content -->
+					<ul class="playlistItems" ng-repeat="item in playlist" ng-if="item.items.length">
+
+						<!-- Single Playlist Item Content -->
+						<li ng-repeat="videos in item.items" class="clearfix">
+							
+							<!-- Pass video ID into the itemID function using ng-click -->
+							<a href="#"  ng-click="itemID(videos.video.id, $event, $index)" ng-class="{ active: $index === selected }" class="clearfix">
+								<img class="thumbnail" ng-src="{{ videos.video.thumbnail.hqDefault }}" alt="{{ videos.video.title }}">
+								
+								<div class="metadata">
+									<h2>{{videos.video.title}}</h2>
+									<p>{{videos.video.description}}</p>
+								</div>
+							</a>
+
+						</li>
+
+					</ul>
+				</div><!-- End ng-youtube -->
+			</div><!-- End App -->
+
+
+		</div>
+	</div>
+
+
+	<!-- build:js(.) scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/fastclick/lib/fastclick.js"></script>
+	<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+	<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
+	<script src="bower_components/foundation/js/foundation.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js({app,.tmp}) scripts/controllers.js.js -->
+	<script src="scripts/controllers.js"></script>
+	<!-- endbuild -->
+</body>
+
+</html>

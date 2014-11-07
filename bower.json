@@ -1,0 +1,15 @@
+{
+  "name": "inquickerapp",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "modernizr": "~2.8.2",
+    "angular": "~1.3.1",
+    "foundation": "~5.4.7",
+    "angular-route": "~1.3.1",
+    "angular-animate": "~1.3.1"
+  },
+  "resolutions": {
+    "jquery": ">= 2.1.0"
+  }
+}
