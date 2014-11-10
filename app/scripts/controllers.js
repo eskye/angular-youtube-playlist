@@ -1,14 +1,18 @@
 /*! Controllers */
 var YouTubeController = angular.module('youtubeApp', ['ngAnimate']);
 
-YouTubeController.controller('PlaylistController', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
+YouTubeController.controller('PlaylistController', ['$scope', '$http', '$sce', '$filter', function($scope, $http, $sce, $filter) {
 
-    var playlistID = 'PLYNJbyJdEK4wsCDt3Tp4MRvX6qqLWT9H5',
-        embedURL = 'http://www.youtube.com/embed/',
+    // https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLkkY7rUh56sKCgtAeu0A0zXku1EbkTGNP&maxResults=50&key=key
+
+    var playlistID      = 'PLkkY7rUh56sKCgtAeu0A0zXku1EbkTGNP',
+        apiKey          = '',
+        maxResults      = 50,
+        embedURL        = 'http://www.youtube.com/embed/',
         /* Video Embed Options */
         /* https://developers.google.com/youtube/player_parameters */
         autohide        = 1, // Auto hide the controls
-        autoplay        = 1, // Auto play the video on page load
+        autoplay        = 0, // Auto play the video on page load
         showinfo        = 0, // Player will not display information like the video title and uploader
         controls        = 2, // Indicates whether the video player controls will display
         modestbranding  = 0, // Do not show a YouTube logo
@@ -19,13 +23,13 @@ YouTubeController.controller('PlaylistController', ['$scope', '$http', '$sce', f
         loop            = 1, // Loop the video, limited to AS3 player
         videoOptions = '?autohide='+autohide+'&autoplay='+autoplay+'&cc_load_policy='+cc_load_policy+'&controls='+controls+'&fs='+fs+'&loop='+loop+'&modestbranding='+modestbranding+'&playsinline='+playsinline+'&rel='+rel+'&showinfo='+showinfo;
 
-    $http.get('http://gdata.youtube.com/feeds/api/playlists/' + playlistID + '?v=2&alt=jsonc')
+    $http.get('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=' + playlistID + '&maxResults=' + maxResults + '&key=' + apiKey)
         .success(function(data, status, headers, config) {
             // Get all data
-            $scope.playlist = data;
+            $scope.playlistItems = data.items;
 
-            // Get first video ID 
-            $scope.firstID = data.data.items[0].video.id;
+            // Get first video ID
+            $scope.firstID = data.items[0].snippet.resourceId.videoId;
             // Set first video ID and trust the resource URL
             $scope.itemURL = $sce.trustAsResourceUrl(embedURL + $scope.firstID + videoOptions);
 

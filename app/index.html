@@ -44,19 +44,22 @@
 						</div>
 					</div><!-- End Video Container -->
 
+					<input type="text" ng-model="search" placeholder="Search Videos">
+
 					<!-- Full Playlist Content -->
 					<!-- ng-if="item.items.length" hides this element if there are no items -->
-					<ul class="playlistItems" ng-repeat="item in playlist" ng-if="item.items.length">
+					<ul class="playlistItems">
 
 						<!-- Single Playlist Item Content -->
-						<li ng-repeat="videos in item.items" class="clearfix">
+						<li ng-repeat="item in playlistItems | filter:search" class="clearfix">
 							<!-- Pass video ID into the itemID function using ng-click -->
-							<a href="#"  ng-click="itemID(videos.video.id, $event, $index)" ng-class="{ active: $index === selected }" class="clearfix">
-								<img class="thumbnail" ng-src="{{ videos.video.thumbnail.hqDefault }}" alt="{{ videos.video.title }}">
+							<a href="#"  ng-click="itemID(item.snippet.resourceId.videoId, $event, $index)" ng-class="{ active: $index === selected }" class="clearfix">
+								<img class="thumbnail" ng-src="{{ ::item.snippet.thumbnails.high.url }}" alt="{{ ::item.snippet.title }}">
 								
 								<div class="metadata">
-									<h2>{{ videos.video.title }}</h2>
-									<p>{{ videos.video.description }}</p>
+									<h2>{{ ::item.snippet.title }}</h2>
+									<p>{{ ::item.snippet.publishedAt | date: dd/MM/yyyy }}</p>
+									<p>{{ ::item.snippet.description }}</p>
 								</div>
 							</a>
 						</li>
