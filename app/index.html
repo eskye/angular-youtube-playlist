@@ -36,35 +36,8 @@
 			<div class="youtubeApp ng-cloak" ng-app="youtubeApp" ng-cloak>
 				<div class="ng-youtube" ng-controller="PlaylistController">
 					
-					<p ng-if="errorMessage.length">{{ errorMessage }}</p>
+					<ytplaylist plistid="PLkkY7rUh56sKCgtAeu0A0zXku1EbkTGNP"></ytplaylist>
 
-					<div class="videoContainer" ng-if="!errorMessage.length">
-						<div class="video videoWrapper">
-							<iframe ng-src="{{ itemURL }}" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div><!-- End Video Container -->
-
-					<input type="text" ng-model="search" placeholder="Search Videos">
-
-					<!-- Full Playlist Content -->
-					<!-- ng-if="item.items.length" hides this element if there are no items -->
-					<ul class="playlistItems">
-
-						<!-- Single Playlist Item Content -->
-						<li ng-repeat="item in playlistItems | filter:search" class="clearfix">
-							<!-- Pass video ID into the itemID function using ng-click -->
-							<a href="#"  ng-click="itemID(item.snippet.resourceId.videoId, $event, $index)" ng-class="{ active: $index === selected }" class="clearfix">
-								<img class="thumbnail" ng-src="{{ ::item.snippet.thumbnails.high.url }}" alt="{{ ::item.snippet.title }}">
-								
-								<div class="metadata">
-									<h2>{{ ::item.snippet.title }}</h2>
-									<p>{{ ::item.snippet.publishedAt | date: dd/MM/yyyy }}</p>
-									<p>{{ ::item.snippet.description }}</p>
-								</div>
-							</a>
-						</li>
-
-					</ul>
 				</div><!-- End ng-youtube -->
 			</div><!-- End App -->
 
