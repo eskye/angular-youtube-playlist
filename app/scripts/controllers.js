@@ -69,7 +69,7 @@ youtubeApp.controller('PlaylistController', ['$scope', '$http', '$sce', '$filter
 }]);
 
 
-youtubeApp.directive('ytplaylist', function($rootScope){
+youtubeApp.directive('ytplaylist', ['$rootScope', function($rootScope){
     var linkFunction = function(scope, element, attributes) {
         $rootScope.plistid = attributes['plistid'];
         scope.autoplay = attributes['autoplay'];
@@ -84,4 +84,4 @@ youtubeApp.directive('ytplaylist', function($rootScope){
         templateUrl: 'ytplaylist.html',
         link: linkFunction
     }
-});
+}]);
