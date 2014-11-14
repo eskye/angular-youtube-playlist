@@ -93,6 +93,6 @@ youtubeApp.directive('ytplaylist', function(){
         scope: {},
         link: linkFunction,
         controller: 'PlaylistController',
-        templateUrl: 'ytplaylist.html'
+        templateUrl: 'ng-templates/ytplaylist.html'
     }
 });
