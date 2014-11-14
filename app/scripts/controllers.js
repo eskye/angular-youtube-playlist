@@ -26,8 +26,8 @@ youtubeApp.factory('videoData', ['$http', '$rootScope', function($http, $rootSco
 }]);
 
 
-youtubeApp.controller('PlaylistController', ['$scope', '$http', '$sce', '$filter', 'videoData', '$rootScope', function($scope, $http, $sce, $filter, videoData, $rootScope) {
-    videoData.getVideos($rootScope.plistid)
+youtubeApp.controller('PlaylistController', ['$scope', '$http', '$sce', '$filter', 'videoData', '$element', function($scope, $http, $sce, $filter, videoData, $element) {
+    videoData.getVideos($element[0].attributes.plistid.value)
     .success(function(data, status, headers, config) {
         /* Video Embed Options */
         /* https://developers.google.com/youtube/player_parameters */
@@ -69,19 +69,16 @@ youtubeApp.controller('PlaylistController', ['$scope', '$http', '$sce', '$filter
 }]);
 
 
-youtubeApp.directive('ytplaylist', ['$rootScope', function($rootScope){
+youtubeApp.directive('ytplaylist', function(){
     var linkFunction = function(scope, element, attributes) {
-        $rootScope.plistid = attributes['plistid'];
         scope.autoplay = attributes['autoplay'];
     };
 
     return{
         restrict: 'E',
-        scope: {
-            plistid: '&plistid',
-            autoplay: '&autoplay'
-        },
-        templateUrl: 'ytplaylist.html',
-        link: linkFunction
+        scope: {},
+        link: linkFunction,
+        controller: 'PlaylistController',
+        templateUrl: 'ytplaylist.html'
     }
-}]);
+});
