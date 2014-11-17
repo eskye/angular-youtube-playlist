@@ -1,5 +1,5 @@
 /*! Controllers */
-var youtubeApp = angular.module('youtubeApp', ['ngAnimate']);
+var youtubeApp = angular.module('youtubeApp', []);
 
 
 youtubeApp.factory('videoData', ['$http', '$rootScope', function($http, $rootScope){
