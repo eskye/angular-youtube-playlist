@@ -80,6 +80,7 @@ body {
         overflow-y: auto;
         background: rgb(0, 225, 184);
         border: 1px solid;
+        -webkit-overflow-scrolling: touch;
         li{
         	a{
         		padding: 20px 0;
